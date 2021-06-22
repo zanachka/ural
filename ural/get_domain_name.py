@@ -29,3 +29,15 @@ def get_hostname(url):
         return urlsplit(ensure_protocol(url)).hostname or None
     except ValueError:
         return None
+
+
+def get_hostname_prefixes(hostname):
+    result = []
+
+    if hostname:
+        domain_parts = hostname.split('.')
+
+        for i in range(len(domain_parts)):
+            result.append('.'.join(domain_parts[i:]))
+
+    return result
